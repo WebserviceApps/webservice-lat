@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Rocket, Monitor, Database, CheckCircle, ArrowRight, MessageCircle, Download, Play, CreditCard } from "lucide-react";
 
 export default function HomePage() {
@@ -7,13 +8,12 @@ export default function HomePage() {
   const whatsappMessage = "Hola, estoy interesado en comenzar un proyecto.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-  // --- 💰 LINKS DE MERCADO PAGO (Tus links ya configurados) ---
+  // --- 💰 LINKS DE MERCADO PAGO ---
   const MP_LANDING = "https://mpago.la/1PkGvpw";
   const MP_CORPORATIVA = "https://mpago.la/1jTd1WK";
   const MP_WEBAPP = "https://mpago.la/1q3A3Lf";
 
-  // --- 💙 LINKS DE PAYPAL (Tus nuevos links oficiales) ---
-  // Extraídos de: https://www.paypal.com/ncp/payment/...
+  // --- 💙 LINKS DE PAYPAL (Tus links oficiales) ---
   const PP_LANDING = "https://www.paypal.com/ncp/payment/UY5HS6URTZRTC";
   const PP_CORPORATIVA = "https://www.paypal.com/ncp/payment/4N9KASGZWA7K6";
   const PP_WEBAPP = "https://www.paypal.com/ncp/payment/V8YLVMYSMA3UA";
@@ -24,14 +24,33 @@ export default function HomePage() {
       <nav className="fixed top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-              webservice.lat
-            </span>
+            
+            {/* LOGO + NOMBRE DE MARCA */}
+            <div className="flex items-center gap-3">
+              {/* Imagen del Logo */}
+              <div className="relative w-10 h-10 overflow-hidden rounded-lg shadow-sm">
+                <Image 
+                  src="/logo.png" // Asegúrate que tu archivo en /public se llame así
+                  alt="Logo webservice.lat" 
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              {/* Nombre de la Marca */}
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                webservice.lat
+              </span>
+            </div>
+
+            {/* MENÚ DE NAVEGACIÓN (Escritorio) */}
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
               <a href="#" className="hover:text-blue-600 transition-colors">Inicio</a>
               <a href="#precios" className="hover:text-blue-600 transition-colors">Planes</a>
               <a href={whatsappLink} target="_blank" className="hover:text-blue-600 transition-colors">Contacto</a>
             </div>
+
+            {/* BOTÓN DE ACCIÓN NAVBAR */}
             <a 
               href={whatsappLink}
               target="_blank"
@@ -178,7 +197,7 @@ export default function HomePage() {
                 <a href={MP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-purple-600 text-white font-bold rounded-xl hover:bg-purple-700 transition-colors">
                   Pagar con Mercado Pago
                 </a>
-                <a href={PP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-[#003087] text-white font-bold rounded-xl hover:bg-[#001c64] transition-colors text-sm border border-slate-200">
+                <a href={PP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-colors text-sm border border-slate-200">
                   Pagar con PayPal
                 </a>
               </div>
