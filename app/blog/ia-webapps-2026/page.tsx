@@ -43,24 +43,24 @@ export default function BlogPost() {
         <div className="prose prose-lg prose-slate mx-auto text-slate-700 leading-relaxed">
           
           <p className="text-xl text-slate-500 font-light mb-8 border-l-4 border-blue-500 pl-4 italic">
-            "En 2026, las WebApps han dejado de ser simples interfaces conectadas a bases de datos. Hoy son sistemas inteligentes capaces de ejecutar procesos empresariales completos." [cite: 245, 246]
+            "En 2026, las WebApps han dejado de ser simples interfaces conectadas a bases de datos. Hoy son sistemas inteligentes capaces de ejecutar procesos empresariales completos.
           </p>
 
           <p className="mb-6">
-            La Inteligencia Artificial —y en particular los modelos avanzados accesibles vía APIs como Gemini— se ha convertido en el nuevo backend cognitivo de las aplicaciones web modernas. [cite: 247]
+            La Inteligencia Artificial —y en particular los modelos avanzados accesibles vía APIs como Gemini— se ha convertido en el nuevo backend cognitivo de las aplicaciones web modernas. 
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">De WebApps tradicionales a WebApps cognitivas</h2>
           <p className="mb-6">
-            Hasta hace pocos años, una WebApp típica seguía un patrón rígido: el usuario ingresaba datos, el backend validaba reglas fijas y se ejecutaba una acción. [cite: 253, 254, 255, 256]
+            Hasta hace pocos años, una WebApp típica seguía un patrón rígido: el usuario ingresaba datos, el backend validaba reglas fijas y se ejecutaba una acción. 
           </p>
           <p className="mb-6">
-            En 2026, este flujo ha evolucionado. Ahora el sistema recibe información estructurada y no estructurada, la IA entiende la intención y el contexto, y la WebApp decide y actúa de forma autónoma. [cite: 257, 258, 259, 260]
+            En 2026, este flujo ha evolucionado. Ahora el sistema recibe información estructurada y no estructurada, la IA entiende la intención y el contexto, y la WebApp decide y actúa de forma autónoma. 
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">1. Structured Outputs: Ordenando el Caos</h2>
           <p className="mb-6">
-            Uno de los mayores problemas históricos era la imprevisibilidad de las respuestas de la IA. Los <strong>Structured Outputs</strong> permiten definir esquemas estrictos (JSON) que Gemini debe respetar. [cite: 264, 267]
+            Uno de los mayores problemas históricos era la imprevisibilidad de las respuestas de la IA. Los <strong>Structured Outputs</strong> permiten definir esquemas estrictos (JSON) que Gemini debe respetar. 
           </p>
           <div className="bg-slate-900 text-slate-300 p-6 rounded-xl font-mono text-sm mb-6">
             <p className="text-green-400 mb-2">// Ejemplo de respuesta estructurada</p>
@@ -68,30 +68,30 @@ export default function BlogPost() {
             &nbsp;&nbsp;"cliente": "Empresa XYZ", <br/>
             &nbsp;&nbsp;"nivel_riesgo": "alto", <br/>
             &nbsp;&nbsp;"accion_recomendada": "escalar_a_legal" <br/>
-            {"}"} [cite: 275, 277, 278, 279]
+            {"}"} 
           </div>
           <p className="mb-6">
-            Esto transforma a la IA en un componente determinístico, permitiendo orquestar flujos de negocio y reducir errores operativos sin intervención humana. [cite: 268, 282, 283, 284]
+            Esto transforma a la IA en un componente determinístico, permitiendo orquestar flujos de negocio y reducir errores operativos sin intervención humana. 
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">2. Multimodal Understanding: Entendiendo el Mundo Real</h2>
           <p className="mb-6">
-            Las empresas no trabajan solo con texto. Trabajan con PDFs, imágenes, videos y audio. [cite: 287, 288, 289, 290]
+            Las empresas no trabajan solo con texto. Trabajan con PDFs, imágenes, videos y audio. 
           </p>
           <p className="mb-6">
-            Una WebApp moderna puede leer una factura escaneada, escuchar una llamada de soporte y analizar un contrato adjunto simultáneamente para tomar una decisión unificada. [cite: 296, 297, 298, 299]
+            Una WebApp moderna puede leer una factura escaneada, escuchar una llamada de soporte y analizar un contrato adjunto simultáneamente para tomar una decisión unificada. 
           </p>
 
           <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">Casos Reales de Automatización:</h3>
           <ul className="list-disc pl-6 space-y-2 mb-8">
-            <li><strong>Onboarding:</strong> Documentos + Selfies + Formularios. [cite: 302]</li>
-            <li><strong>Gestión de Siniestros:</strong> Fotos del daño + Descripción + Póliza. [cite: 302]</li>
-            <li><strong>Control de Calidad:</strong> Imágenes de productos + Checklist. [cite: 302]</li>
+            <li><strong>Onboarding:</strong> Documentos + Selfies + Formularios. </li>
+            <li><strong>Gestión de Siniestros:</strong> Fotos del daño + Descripción + Póliza. </li>
+            <li><strong>Control de Calidad:</strong> Imágenes de productos + Checklist. </li>
           </ul>
 
           <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Conclusión</h2>
           <p className="mb-8">
-            En 2026, la pregunta ya no es si usar IA, sino cómo integrarla. Las WebApps del futuro no solo muestran información: operan negocios. Quienes diseñen sus plataformas con esta mentalidad hoy, liderarán el mercado. [cite: 318, 325, 326]
+            En 2026, la pregunta ya no es si usar IA, sino cómo integrarla. Las WebApps del futuro no solo muestran información: operan negocios. Quienes diseñen sus plataformas con esta mentalidad hoy, liderarán el mercado. 
           </p>
 
         </div>
