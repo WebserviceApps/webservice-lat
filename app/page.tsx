@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Rocket, Monitor, Database, CheckCircle, ArrowRight, MessageCircle, Download, Play, CreditCard } from "lucide-react";
+import Link from "next/link"; 
+import { Rocket, Monitor, Database, CheckCircle, ArrowRight, MessageCircle, Download, Play, CreditCard, Plus, Cpu, BookOpen } from "lucide-react";
 
 export default function HomePage() {
   
@@ -8,12 +9,11 @@ export default function HomePage() {
   const whatsappMessage = "Hola, estoy interesado en comenzar un proyecto.";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-  // --- 💰 LINKS DE MERCADO PAGO ---
+  // --- 💰 LINKS DE PAGO ---
   const MP_LANDING = "https://mpago.la/1PkGvpw";
   const MP_CORPORATIVA = "https://mpago.la/1jTd1WK";
   const MP_WEBAPP = "https://mpago.la/1q3A3Lf";
 
-  // --- 💙 LINKS DE PAYPAL (Tus links oficiales) ---
   const PP_LANDING = "https://www.paypal.com/ncp/payment/UY5HS6URTZRTC";
   const PP_CORPORATIVA = "https://www.paypal.com/ncp/payment/4N9KASGZWA7K6";
   const PP_WEBAPP = "https://www.paypal.com/ncp/payment/V8YLVMYSMA3UA";
@@ -25,32 +25,30 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
-            {/* LOGO + NOMBRE DE MARCA */}
+            {/* LOGO + NOMBRE */}
             <div className="flex items-center gap-3">
-              {/* Imagen del Logo */}
               <div className="relative w-10 h-10 overflow-hidden rounded-lg shadow-sm">
                 <Image 
-                  src="/logo.png" // Asegúrate que tu archivo en /public se llame así
+                  src="/logo.png" 
                   alt="Logo webservice.lat" 
                   fill
                   className="object-cover"
                   priority
                 />
               </div>
-              {/* Nombre de la Marca */}
               <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
                 webservice.lat
               </span>
             </div>
 
-            {/* MENÚ DE NAVEGACIÓN (Escritorio) */}
+            {/* MENÚ */}
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-              <a href="#" className="hover:text-blue-600 transition-colors">Inicio</a>
-              <a href="#precios" className="hover:text-blue-600 transition-colors">Planes</a>
+              <Link href="#" className="hover:text-blue-600 transition-colors">Inicio</Link>
+              <Link href="#precios" className="hover:text-blue-600 transition-colors">Planes</Link>
+              <Link href="/blog/ia-webapps-2026" className="hover:text-blue-600 transition-colors">Blog</Link>
               <a href={whatsappLink} target="_blank" className="hover:text-blue-600 transition-colors">Contacto</a>
             </div>
 
-            {/* BOTÓN DE ACCIÓN NAVBAR */}
             <a 
               href={whatsappLink}
               target="_blank"
@@ -79,11 +77,7 @@ export default function HomePage() {
             <a href="#precios" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:bg-blue-700 hover:-translate-y-1 transition-all">
               Ver Precios
             </a>
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-medium rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
-            >
+            <a href={whatsappLink} target="_blank" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-medium rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
               <MessageCircle className="w-5 h-5 text-green-600"/>
               Hablemos
             </a>
@@ -91,15 +85,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- VIDEO CINEMÁTICO (Veo 3.1) --- */}
+      {/* --- VIDEO CINEMÁTICO --- */}
       <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden flex items-center justify-center bg-slate-900">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-        >
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-60">
           <source src="/city-network.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-slate-900/50"></div>
@@ -128,101 +116,106 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* PLAN 1: LANDING PAGE ($299) */}
+            {/* PLAN 1: LANDING PAGE */}
             <div className="relative p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
-                <Rocket className="w-7 h-7 text-blue-600" />
-              </div>
+              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6"><Rocket className="w-7 h-7 text-blue-600" /></div>
               <h3 className="text-2xl font-bold text-slate-900">Landing Page</h3>
-              <p className="text-slate-500 mt-2 text-sm h-10">Ideal para vender un producto específico o captar datos.</p>
-              <div className="my-6">
-                <span className="text-4xl font-extrabold text-slate-900">$299</span>
-                <span className="text-slate-500 text-sm font-medium"> USD</span>
-              </div>
+              <p className="text-slate-500 mt-2 text-sm h-10">Ideal para vender un producto específico.</p>
+              <div className="my-6"><span className="text-4xl font-extrabold text-slate-900">$299</span><span className="text-slate-500 text-sm font-medium"> USD</span></div>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-green-500 mr-3"/> Diseño en 1 sola página</li>
-                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-green-500 mr-3"/> Botones de WhatsApp</li>
                 <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-green-500 mr-3"/> Carga ultra rápida</li>
+                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-green-500 mr-3"/> Botón WhatsApp</li>
               </ul>
-              
               <div className="space-y-3">
-                <a href={MP_LANDING} target="_blank" className="block w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">
-                  Pagar con Mercado Pago
-                </a>
-                <a href={PP_LANDING} target="_blank" className="block w-full text-center py-3 bg-[#003087] text-white font-bold rounded-xl hover:bg-[#001c64] transition-colors text-sm border border-slate-200">
-                  Pagar con PayPal
-                </a>
+                <a href={MP_LANDING} target="_blank" className="block w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors">Pagar con Mercado Pago</a>
+                <a href={PP_LANDING} target="_blank" className="block w-full text-center py-3 bg-[#003087] text-white font-bold rounded-xl hover:bg-[#001c64] transition-colors text-sm">Pagar con PayPal</a>
               </div>
             </div>
 
-            {/* PLAN 2: WEB CORPORATIVA ($499) */}
+            {/* PLAN 2: WEB CORPORATIVA */}
             <div className="relative p-8 rounded-3xl bg-slate-900 text-white shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col ring-4 ring-blue-500/20">
               <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">POPULAR</div>
               <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-6"><Monitor className="w-7 h-7 text-white" /></div>
               <h3 className="text-2xl font-bold">Web Corporativa</h3>
-              <p className="text-slate-400 mt-2 text-sm h-10">Tu empresa en internet. Muestra quién eres al mundo.</p>
-              <div className="my-6">
-                <span className="text-4xl font-extrabold text-white">$499</span>
-                <span className="text-slate-400 text-sm font-medium"> USD</span>
-              </div>
+              <p className="text-slate-400 mt-2 text-sm h-10">Tu empresa en internet.</p>
+              <div className="my-6"><span className="text-4xl font-extrabold text-white">$499</span><span className="text-slate-400 text-sm font-medium"> USD</span></div>
               <ul className="space-y-4 mb-8 flex-1">
                 <li className="flex items-center text-slate-300 text-sm"><CheckCircle className="w-4 h-4 text-blue-400 mr-3"/> Hasta 5 secciones</li>
-                <li className="flex items-center text-slate-300 text-sm"><CheckCircle className="w-4 h-4 text-blue-400 mr-3"/> Formulario de contacto</li>
-                <li className="flex items-center text-slate-300 text-sm"><CheckCircle className="w-4 h-4 text-blue-400 mr-3"/> Optimizado para Google (SEO)</li>
+                <li className="flex items-center text-slate-300 text-sm"><CheckCircle className="w-4 h-4 text-blue-400 mr-3"/> Formulario contacto</li>
+                <li className="flex items-center text-slate-300 text-sm"><CheckCircle className="w-4 h-4 text-blue-400 mr-3"/> SEO Básico</li>
               </ul>
-              
               <div className="space-y-3">
-                <a href={MP_CORPORATIVA} target="_blank" className="block w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/50">
-                  Pagar con Mercado Pago
-                </a>
-                <a href={PP_CORPORATIVA} target="_blank" className="block w-full text-center py-3 bg-slate-800 text-slate-200 font-bold rounded-xl hover:bg-slate-700 transition-colors text-sm border border-slate-700">
-                  Pagar con PayPal
-                </a>
+                <a href={MP_CORPORATIVA} target="_blank" className="block w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/50">Pagar con Mercado Pago</a>
+                <a href={PP_CORPORATIVA} target="_blank" className="block w-full text-center py-3 bg-slate-800 text-slate-200 font-bold rounded-xl hover:bg-slate-700 transition-colors text-sm border border-slate-700">Pagar con PayPal</a>
               </div>
             </div>
 
-            {/* PLAN 3: WEB APP ($1,000) */}
+            {/* PLAN 3: WEB APP */}
             <div className="relative p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col">
               <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6"><Database className="w-7 h-7 text-purple-600" /></div>
               <h3 className="text-2xl font-bold text-slate-900">WebApp a Medida</h3>
-              <p className="text-slate-500 mt-2 text-sm h-10">Sistemas avanzados. Gestión de usuarios y datos.</p>
+              <p className="text-slate-500 mt-2 text-sm h-10">Sistemas avanzados y gestión de datos.</p>
               <div className="my-6"><span className="text-4xl font-extrabold text-slate-900">$1,000</span><span className="text-slate-500 text-sm font-medium"> USD+</span></div>
+              
               <ul className="space-y-4 mb-8 flex-1">
-                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Registro y Login</li>
-                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Base de Datos</li>
-                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Pagos integrados</li>
+                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Registro de Usuarios</li>
+                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Base de Datos Real</li>
+                <li className="flex items-center text-slate-700 text-sm"><CheckCircle className="w-4 h-4 text-purple-500 mr-3"/> Panel Administrativo</li>
               </ul>
               
+              {/* Link a Detalle de WebApp */}
+              <div className="mb-6 text-center">
+                  <Link href="/servicios/webapp" className="text-sm font-bold text-purple-600 hover:text-purple-700 hover:underline flex items-center justify-center gap-1">
+                    <Plus className="w-4 h-4"/> Ver características y Stack
+                  </Link>
+              </div>
+
               <div className="space-y-3">
-                <a href={MP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-purple-600 text-white font-bold rounded-xl hover:bg-purple-700 transition-colors">
-                  Pagar con Mercado Pago
-                </a>
-                <a href={PP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-slate-100 text-slate-700 font-bold rounded-xl hover:bg-slate-200 transition-colors text-sm border border-slate-200">
-                  Pagar con PayPal
-                </a>
+                <a href={MP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-purple-600 text-white font-bold rounded-xl hover:bg-purple-700 transition-colors">Pagar con Mercado Pago</a>
+                <a href={PP_WEBAPP} target="_blank" className="block w-full text-center py-3 bg-[#003087] text-white font-bold rounded-xl hover:bg-[#001c64] transition-colors text-sm border border-slate-200">Pagar con PayPal</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- LEAD MAGNET --- */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      {/* --- NUEVA SECCIÓN: BLOG PREVIEW --- */}
+      <section className="py-20 bg-slate-50 border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-4">
+           <div className="flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl p-8 border border-slate-200 hover:shadow-lg transition-all">
+              <div className="flex-1">
+                 <div className="flex items-center gap-2 mb-3">
+                    <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">Nuevo Artículo</span>
+                    <span className="text-slate-400 text-xs">Lectura de 3 min</span>
+                 </div>
+                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Cómo la IA está cambiando las WebApps en 2026</h3>
+                 <p className="text-slate-600 mb-6">Descubre por qué las aplicaciones del futuro no solo guardan datos, sino que toman decisiones. Un análisis profundo sobre Gemini y la automatización empresarial.</p>
+                 <Link href="/blog/ia-webapps-2026" className="text-blue-600 font-bold hover:underline flex items-center gap-2 group">
+                    <BookOpen className="w-4 h-4 group-hover:scale-110 transition-transform"/>
+                    Leer Artículo Completo <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
+                 </Link>
+              </div>
+              
+              {/* Icono decorativo del Blog */}
+              <div className="hidden md:flex w-32 h-32 bg-slate-100 rounded-xl items-center justify-center">
+                  <Cpu className="w-12 h-12 text-slate-400" />
+              </div>
+           </div>
+        </div>
+      </section>
+
+      {/* --- LEAD MAGNET (Checklist) --- */}
+      <section className="py-20 bg-white border-t border-slate-200">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">¿No estás listo para comprar?</h2>
-          <p className="text-lg text-slate-600 mb-8">
-            Descarga gratis nuestra guía exclusiva: <br/>
-            <strong>"Checklist 2025: Las 7 cosas que tu web necesita para vender sola"</strong>.
-          </p>
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 inline-block w-full max-w-md">
-            <div className="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 text-red-600">
-              <Download className="w-8 h-8"/>
-            </div>
-            <h3 className="font-bold text-xl mb-2">Guía PDF Gratuita</h3>
-            <p className="text-sm text-slate-500 mb-6">Lectura de 5 minutos. Ahorra miles de dólares en errores comunes.</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">Recursos Gratuitos</h2>
+          <p className="text-lg text-slate-600 mb-8">Empieza a optimizar tu negocio hoy mismo.</p>
+          <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-100 inline-block w-full max-w-md">
+            <div className="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mx-auto mb-4 text-red-600"><Download className="w-8 h-8"/></div>
+            <h3 className="font-bold text-xl mb-2">Checklist PDF 2025</h3>
+            <p className="text-slate-500 text-sm mb-4">Las 7 cosas que tu web necesita para vender sola.</p>
             <a href="/checklist-2025.pdf" download className="block w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center justify-center gap-2">
-              <Download className="w-4 h-4"/>
-              Descargar Ahora
+              <Download className="w-4 h-4"/> Descargar Ahora
             </a>
           </div>
         </div>
@@ -230,7 +223,7 @@ export default function HomePage() {
 
       {/* --- FOOTER --- */}
       <footer className="py-12 bg-white text-center">
-        <p className="text-slate-500 text-sm">© 2025 webservice.lat. Infraestructura de Confianza.</p>
+        <p className="text-slate-500 text-sm">© 2025 webservice.lat.</p>
         <div className="mt-4 flex justify-center space-x-4 opacity-50 items-center">
            <span className="text-xs border px-2 py-1 rounded flex items-center gap-1"><CreditCard className="w-3 h-3"/> MercadoPago</span>
            <span className="text-xs border px-2 py-1 rounded flex items-center gap-1"><CreditCard className="w-3 h-3"/> PayPal</span>
