@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link"; 
-import { Rocket, Monitor, Database, CheckCircle, ArrowRight, MessageCircle, Download, Play, CreditCard, Plus, Cpu, BookOpen } from "lucide-react";
+import { Rocket, Monitor, Database, CheckCircle, ArrowRight, MessageCircle, Download, Play, CreditCard, Plus, Cpu, BookOpen, Calculator, Sparkles } from "lucide-react";
 
 export default function HomePage() {
   
@@ -46,6 +46,12 @@ export default function HomePage() {
               <Link href="#" className="hover:text-blue-600 transition-colors">Inicio</Link>
               <Link href="#precios" className="hover:text-blue-600 transition-colors">Planes</Link>
               <Link href="/blog/ia-webapps-2026" className="hover:text-blue-600 transition-colors">Blog</Link>
+              
+              {/* Enlace destacado en el menú */}
+              <Link href="/cotizar" className="flex items-center gap-1 text-purple-600 hover:text-purple-700 font-bold transition-colors">
+                <Calculator className="w-4 h-4" /> Cotizar IA
+              </Link>
+              
               <a href={whatsappLink} target="_blank" className="hover:text-blue-600 transition-colors">Contacto</a>
             </div>
 
@@ -74,12 +80,12 @@ export default function HomePage() {
             Sin complicaciones técnicas. Creamos desde páginas para vender un solo producto hasta sistemas completos para administrar tu empresa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#precios" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 hover:bg-blue-700 hover:-translate-y-1 transition-all">
-              Ver Precios
-            </a>
-            <a href={whatsappLink} target="_blank" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-medium rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-              <MessageCircle className="w-5 h-5 text-green-600"/>
-              Hablemos
+            <Link href="/cotizar" className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
+              <Sparkles className="w-5 h-5 text-yellow-400"/>
+              Cotizar con IA
+            </Link>
+            <a href="#precios" className="px-8 py-4 bg-white text-slate-700 border border-slate-200 font-medium rounded-xl hover:bg-slate-50 transition-all">
+              Ver Planes Fijos
             </a>
           </div>
         </div>
@@ -104,13 +110,62 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* --- 🔥 NUEVA SECCIÓN DESTACADA: COTIZADOR IA --- */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white overflow-hidden relative">
+        {/* Decoración de fondo */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="text-left md:w-1/2">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-medium mb-6 text-white border border-white/20">
+              <Sparkles className="w-4 h-4 text-yellow-300" /> Nueva Tecnología DeepSeek V3
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+              ¿No sabes cuánto cuesta tu idea?
+            </h2>
+            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+              Dile adiós a esperar días por un presupuesto. Nuestra Inteligencia Artificial analiza tu proyecto y te da un plan y precio recomendado <strong>al instante</strong>.
+            </p>
+            <Link 
+              href="/cotizar"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-700 font-bold text-lg rounded-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all duration-300"
+            >
+              <Calculator className="w-6 h-6" />
+              Probar Cotizador IA Ahora
+            </Link>
+          </div>
+          
+          {/* Imagen ilustrativa (Simulación de chat) */}
+          <div className="md:w-1/2 w-full">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="flex gap-4 mb-4">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div className="space-y-4 font-mono text-sm">
+                <div className="bg-white/10 p-3 rounded-lg rounded-tl-none self-start w-3/4">
+                  "Quiero una app tipo Uber para pasear perros..."
+                </div>
+                <div className="bg-blue-500 text-white p-3 rounded-lg rounded-tr-none self-end w-3/4 ml-auto shadow-lg">
+                  ✅ Análisis Completado:<br/>
+                  Plan Recomendado: <strong>WebApp a Medida</strong><br/>
+                  Precio Estimado: <strong>$1,000 USD</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* --- PRECIOS --- */}
       <section id="precios" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Elige tu Plan Ideal</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">O Elige un Plan Fijo</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Precios transparentes. Pago único. Sin letras chicas.
+              Precios transparentes. Pago único. Sin sorpresas.
             </p>
           </div>
 
