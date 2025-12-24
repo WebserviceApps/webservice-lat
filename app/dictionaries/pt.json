@@ -1,0 +1,58 @@
+{
+  "navbar": {
+    "home": "Início",
+    "plans": "Planos",
+    "blog": "Blog",
+    "quote": "Cotar IA",
+    "contact": "Contato",
+    "consult": "Consultar"
+  },
+  "hero": {
+    "badge": "SOLUÇÕES DIGITAIS SIMPLES",
+    "title_start": "Levamos o seu Negócio",
+    "title_end": "ao Próximo Nível",
+    "subtitle": "Sem complicações técnicas. Criamos desde páginas para vender um único produto até sistemas completos para gerir a sua empresa.",
+    "cta_primary": "Cotar com IA",
+    "cta_secondary": "Ver Planos Fixos"
+  },
+  "video_section": {
+    "title": "O Mundo Digital Não Dorme. O Seu Negócio Também Não Deveria.",
+    "subtitle": "Infraestrutura que trabalha 24/7. Automação, vendas e presença global enquanto você descansa."
+  },
+  "deepseek_section": {
+    "badge": "Nova Tecnologia DeepSeek V3",
+    "title": "Não sabe quanto custa a sua ideia?",
+    "description": "Diga adeus à espera de dias por um orçamento. A nossa Inteligência Artificial analisa o seu projeto e dá-lhe um plano e preço recomendado instantaneamente.",
+    "cta": "Testar Cotador IA Agora",
+    "chat_user": "Quero um app tipo Uber para passear cães...",
+    "chat_ai": "Análise Concluída",
+    "chat_plan": "Plano Recomendado",
+    "chat_price": "Preço Estimado"
+  },
+  "pricing": {
+    "title": "Ou Escolha um Plano Fixo",
+    "subtitle": "Preços transparentes. Pagamento único. Sem surpresas.",
+    "landing": {
+      "title": "Landing Page",
+      "desc": "Ideal para vender um produto específico.",
+      "features": ["Design de página única", "Carregamento ultra rápido", "Botão WhatsApp"]
+    },
+    "corporate": {
+      "badge": "POPULAR",
+      "title": "Web Corporativa",
+      "desc": "A sua empresa na internet.",
+      "features": ["Até 5 seções", "Formulário de contato", "SEO Básico"]
+    },
+    "webapp": {
+      "title": "WebApp Sob Medida",
+      "desc": "Sistemas avançados e gestão de dados.",
+      "features": ["Registro de Usuários", "Banco de Dados Real", "Painel Administrativo"],
+      "more_info": "Ver recursos e Stack"
+    },
+    "pay_mp": "Pagar com Mercado Pago",
+    "pay_pp": "Pagar com PayPal"
+  },
+  "footer": {
+    "rights": "© 2025 webservice.lat."
+  }
+}

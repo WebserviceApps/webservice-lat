@@ -1,0 +1,58 @@
+{
+  "navbar": {
+    "home": "Home",
+    "plans": "Pricing",
+    "blog": "Blog",
+    "quote": "Quote AI",
+    "contact": "Contact",
+    "consult": "Inquire"
+  },
+  "hero": {
+    "badge": "SIMPLE DIGITAL SOLUTIONS",
+    "title_start": "Taking Your Business",
+    "title_end": "to the Next Level",
+    "subtitle": "No technical hassles. We build everything from single-product landing pages to complete systems to manage your company.",
+    "cta_primary": "Quote with AI",
+    "cta_secondary": "View Fixed Plans"
+  },
+  "video_section": {
+    "title": "The Digital World Never Sleeps. Neither Should Your Business.",
+    "subtitle": "Infrastructure that works 24/7. Automation, sales, and global presence while you sleep."
+  },
+  "deepseek_section": {
+    "badge": "New DeepSeek V3 Technology",
+    "title": "Don't know how much your idea costs?",
+    "description": "Say goodbye to waiting days for a quote. Our Artificial Intelligence analyzes your project and gives you a recommended plan and price instantly.",
+    "cta": "Try AI Quoter Now",
+    "chat_user": "I want an Uber-like app for dog walking...",
+    "chat_ai": "Analysis Complete",
+    "chat_plan": "Recommended Plan",
+    "chat_price": "Estimated Price"
+  },
+  "pricing": {
+    "title": "Or Choose a Fixed Plan",
+    "subtitle": "Transparent pricing. One-time payment. No surprises.",
+    "landing": {
+      "title": "Landing Page",
+      "desc": "Ideal for selling a specific product.",
+      "features": ["One-page design", "Ultra-fast loading", "WhatsApp Button"]
+    },
+    "corporate": {
+      "badge": "POPULAR",
+      "title": "Corporate Web",
+      "desc": "Your company on the internet.",
+      "features": ["Up to 5 sections", "Contact form", "Basic SEO"]
+    },
+    "webapp": {
+      "title": "Custom WebApp",
+      "desc": "Advanced systems and data management.",
+      "features": ["User Registration", "Real Database", "Admin Panel"],
+      "more_info": "View features and Stack"
+    },
+    "pay_mp": "Pay with Mercado Pago",
+    "pay_pp": "Pay with PayPal"
+  },
+  "footer": {
+    "rights": "© 2025 webservice.lat."
+  }
+}

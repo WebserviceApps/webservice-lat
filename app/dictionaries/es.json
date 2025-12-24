@@ -1,0 +1,58 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "plans": "Planes",
+    "blog": "Blog",
+    "quote": "Cotizar IA",
+    "contact": "Contacto",
+    "consult": "Consultar"
+  },
+  "hero": {
+    "badge": "SOLUCIONES DIGITALES SIMPLES",
+    "title_start": "Llevamos tu Negocio",
+    "title_end": "al Siguiente Nivel",
+    "subtitle": "Sin complicaciones técnicas. Creamos desde páginas para vender un solo producto hasta sistemas completos para administrar tu empresa.",
+    "cta_primary": "Cotizar con IA",
+    "cta_secondary": "Ver Planes Fijos"
+  },
+  "video_section": {
+    "title": "El Mundo Digital No Duerme. Tu Negocio Tampoco Debería.",
+    "subtitle": "Infraestructura que trabaja 24/7. Automatización, ventas y presencia global mientras tú descansas."
+  },
+  "deepseek_section": {
+    "badge": "Nueva Tecnología DeepSeek V3",
+    "title": "¿No sabes cuánto cuesta tu idea?",
+    "description": "Dile adiós a esperar días por un presupuesto. Nuestra Inteligencia Artificial analiza tu proyecto y te da un plan y precio recomendado al instante.",
+    "cta": "Probar Cotizador IA Ahora",
+    "chat_user": "Quiero una app tipo Uber para pasear perros...",
+    "chat_ai": "Análisis Completado",
+    "chat_plan": "Plan Recomendado",
+    "chat_price": "Precio Estimado"
+  },
+  "pricing": {
+    "title": "O Elige un Plan Fijo",
+    "subtitle": "Precios transparentes. Pago único. Sin sorpresas.",
+    "landing": {
+      "title": "Landing Page",
+      "desc": "Ideal para vender un producto específico.",
+      "features": ["Diseño en 1 sola página", "Carga ultra rápida", "Botón WhatsApp"]
+    },
+    "corporate": {
+      "badge": "POPULAR",
+      "title": "Web Corporativa",
+      "desc": "Tu empresa en internet.",
+      "features": ["Hasta 5 secciones", "Formulario contacto", "SEO Básico"]
+    },
+    "webapp": {
+      "title": "WebApp a Medida",
+      "desc": "Sistemas avanzados y gestión de datos.",
+      "features": ["Registro de Usuarios", "Base de Datos Real", "Panel Administrativo"],
+      "more_info": "Ver características y Stack"
+    },
+    "pay_mp": "Pagar con Mercado Pago",
+    "pay_pp": "Pagar con PayPal"
+  },
+  "footer": {
+    "rights": "© 2025 webservice.lat."
+  }
+}
