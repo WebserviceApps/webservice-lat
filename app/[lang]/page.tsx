@@ -3,14 +3,19 @@ import Link from "next/link";
 import { Rocket, Monitor, Database, CheckCircle, MessageCircle, CreditCard, Plus, Calculator, Sparkles } from "lucide-react";
 import { getDictionary } from "../get-dictionary";
 
+// Definimos el tipo
+type ValidLocale = "es" | "en" | "pt";
+
 export default async function HomePage({ 
   params 
 }: { 
-  params: Promise<{ lang: "es" | "en" | "pt" }> 
+  // ⚠️ CAMBIO: Usamos string
+  params: Promise<{ lang: string }> 
 }) {
-  // 1. Resolvemos el idioma (Next.js 15)
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  // ⚠️ CAMBIO: Forzamos el tipo
+  const validLang = lang as ValidLocale;
+  const dict = await getDictionary(validLang);
 
   const whatsappLink = "https://wa.me/56978029612";
   
@@ -39,7 +44,7 @@ export default async function HomePage({
             {dict.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${lang}/cotizar`} className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
+            <Link href={`/${validLang}/cotizar`} className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl shadow-lg hover:bg-slate-800 hover:-translate-y-1 transition-all flex items-center justify-center gap-2">
               <Sparkles className="w-5 h-5 text-yellow-400"/>
               {dict.hero.cta_primary}
             </Link>
@@ -80,7 +85,7 @@ export default async function HomePage({
               {dict.deepseek_section.description}
             </p>
             <Link 
-              href={`/${lang}/cotizar`}
+              href={`/${validLang}/cotizar`}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-blue-700 font-bold text-lg rounded-xl shadow-2xl hover:bg-blue-50 hover:scale-105 transition-all duration-300"
             >
               <Calculator className="w-6 h-6" />
@@ -164,7 +169,7 @@ export default async function HomePage({
               </ul>
               
               <div className="mb-6 text-center">
-                  <Link href={`/${lang}/servicios/webapp`} className="text-sm font-bold text-purple-600 hover:text-purple-700 hover:underline flex items-center justify-center gap-1">
+                  <Link href={`/${validLang}/servicios/webapp`} className="text-sm font-bold text-purple-600 hover:text-purple-700 hover:underline flex items-center justify-center gap-1">
                     <Plus className="w-4 h-4"/> {dict.pricing.webapp.more_info}
                   </Link>
               </div>

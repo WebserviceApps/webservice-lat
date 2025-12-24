@@ -13,18 +13,22 @@ export const metadata: Metadata = {
   description: "Cotiza tu proyecto de software en segundos con Inteligencia Artificial.",
 };
 
+// Definimos el tipo de idioma aceptado
+type ValidLocale = "es" | "en" | "pt";
+
 export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: "es" | "en" | "pt" }>;
+  // ⚠️ CAMBIO CLAVE: Aceptamos 'string' para que Next.js no se queje
+  params: Promise<{ lang: string }>;
 }) {
-  // 1. Esperamos a que los parámetros se resuelvan (Next.js 15)
   const { lang } = await params;
   
-  // 2. Cargamos el diccionario
-  const dict = await getDictionary(lang);
+  // ⚠️ TRUCO: Le decimos a TypeScript "Confía en mí, esto es un ValidLocale"
+  const validLang = lang as ValidLocale;
+  const dict = await getDictionary(validLang);
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -39,8 +43,7 @@ export default async function RootLayout({
           />
         </noscript>
 
-        {/* 3. Pasamos 'lang' (ya resuelto) al Navbar */}
-        <Navbar dict={dict.navbar} lang={lang} />
+        <Navbar dict={dict.navbar} lang={validLang} />
         
         {children}
 

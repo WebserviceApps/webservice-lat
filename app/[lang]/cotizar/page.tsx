@@ -1,15 +1,20 @@
 import { getDictionary } from "../../get-dictionary";
 import { Sparkles, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import ChatInterface from "../../components/ChatInterface"; // 👈 Importamos el chat
+import ChatInterface from "../../components/ChatInterface";
+
+type ValidLocale = "es" | "en" | "pt";
 
 export default async function CotizarPage({
   params,
 }: {
-  params: Promise<{ lang: "es" | "en" | "pt" }>;
+  // ⚠️ CAMBIO: Usamos string
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  // ⚠️ CAMBIO: Forzamos el tipo
+  const validLang = lang as ValidLocale;
+  const dict = await getDictionary(validLang);
 
   return (
     <main className="min-h-screen bg-slate-50 pt-24 pb-12 px-4">
@@ -17,7 +22,7 @@ export default async function CotizarPage({
         
         {/* Botón Volver */}
         <Link 
-          href={`/${lang}`} 
+          href={`/${validLang}`} 
           className="inline-flex items-center text-slate-500 hover:text-blue-600 mb-8 transition-colors font-medium text-sm"
         >
           <ArrowLeft className="w-4 h-4 mr-1" /> {dict.navbar.home}
@@ -36,8 +41,8 @@ export default async function CotizarPage({
           </p>
         </div>
 
-        {/* Invocamos al Chat Interactivo pasándole los textos */}
-        <ChatInterface dict={dict.deepseek_section} />
+        {/* 👇 Pasamos validLang */}
+        <ChatInterface dict={dict.deepseek_section} lang={validLang} />
 
       </div>
     </main>
