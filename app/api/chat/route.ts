@@ -48,7 +48,8 @@ export async function POST(req: Request) {
       temperature: 0.7,
     });
 
-    const aiResponse = completion.choices[0].message.content;
+   // Agregamos '|| ""' para que si viene nulo, use comillas vacías y no rompa todo.
+    const aiResponse = completion.choices[0].message.content || "";
 
     // 👇 3. REGISTRAMOS LO QUE RESPONDIÓ LA IA
     console.log(`🤖 IA responde: "${aiResponse.substring(0, 50)}..."`); // Guardamos solo el inicio para no llenar el log
