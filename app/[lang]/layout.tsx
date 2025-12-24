@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Navbar from "../components/Navbar";
+import WhatsAppFloat from "../components/WhatsAppFloat"; // 👈 Importamos el nuevo componente
 import Script from "next/script";
 import { GoogleTagManager } from '@next/third-parties/google';
 import { getDictionary } from "../get-dictionary";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description: "Cotiza tu proyecto de software en segundos con Inteligencia Artificial.",
 };
 
-// Definimos el tipo de idioma aceptado
+// Definimos los idiomas válidos
 type ValidLocale = "es" | "en" | "pt";
 
 export default async function RootLayout({
@@ -21,17 +22,18 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  // ⚠️ CAMBIO CLAVE: Aceptamos 'string' para que Next.js no se queje
+  // Corrección crítica para Netlify: Usamos 'string'
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
   
-  // ⚠️ TRUCO: Le decimos a TypeScript "Confía en mí, esto es un ValidLocale"
-  const validLang = lang as ValidLocale;
+  // Convertimos el string al tipo ValidLocale de forma segura
+  const validLang = (lang as ValidLocale) || "es";
+  
   const dict = await getDictionary(validLang);
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={validLang} suppressHydrationWarning>
       <GoogleTagManager gtmId="GTM-W6QRX7SP" />
       <body className={inter.className}>
         <noscript>
@@ -46,6 +48,9 @@ export default async function RootLayout({
         <Navbar dict={dict.navbar} lang={validLang} />
         
         {children}
+
+        {/* 👇 AQUÍ ESTÁ EL WHATSAPP INTEGRADO */}
+        <WhatsAppFloat lang={validLang} />
 
         <Script id="clarity-script" strategy="afterInteractive">
           {`

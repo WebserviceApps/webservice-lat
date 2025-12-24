@@ -3,22 +3,22 @@ import Link from "next/link";
 import { Rocket, Monitor, Database, CheckCircle, MessageCircle, CreditCard, Plus, Calculator, Sparkles } from "lucide-react";
 import { getDictionary } from "../get-dictionary";
 
-// Definimos el tipo
+// Definimos el tipo de idioma válido
 type ValidLocale = "es" | "en" | "pt";
 
 export default async function HomePage({ 
   params 
 }: { 
-  // ⚠️ CAMBIO: Usamos string
+  // ⚠️ FIX PARA NETLIFY: Aceptamos string genérico
   params: Promise<{ lang: string }> 
 }) {
   const { lang } = await params;
-  // ⚠️ CAMBIO: Forzamos el tipo
-  const validLang = lang as ValidLocale;
+  
+  // Convertimos el idioma de forma segura
+  const validLang = (lang as ValidLocale) || "es";
+  
   const dict = await getDictionary(validLang);
 
-  const whatsappLink = "https://wa.me/56978029612";
-  
   // Links de pago
   const MP_LANDING = "https://mpago.la/1PkGvpw";
   const MP_CORPORATIVA = "https://mpago.la/1jTd1WK";
@@ -192,10 +192,9 @@ export default async function HomePage({
         </div>
       </footer>
 
-      {/* WHATSAPP */}
-      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 flex items-center gap-2 group border-4 border-white/30 backdrop-blur-sm">
-        <MessageCircle className="w-8 h-8 fill-current" />
-      </a>
+      {/* EL BOTÓN DE WHATSAPP ANTIGUO HA SIDO ELIMINADO 🗑️ */}
+      {/* Ahora se carga automáticamente desde el Layout */}
+
     </main>
   );
 }
