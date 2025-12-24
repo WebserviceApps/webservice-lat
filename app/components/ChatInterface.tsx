@@ -4,20 +4,14 @@ import { useState } from "react";
 import { Send, User, Bot } from "lucide-react";
 
 interface ChatInterfaceProps {
-  dict: {
-    badge: string;
-    title: string;
-    description: string;
-    cta: string;
-    chat_user: string;
-    chat_ai: string;
-    chat_plan: string;
-    chat_price: string;
-  };
+  dict: any; // Simplificamos el tipo para evitar errores
+  lang: "es" | "en" | "pt";
 }
 
-export default function ChatInterface({ dict }: ChatInterfaceProps) {
+export default function ChatInterface({ dict, lang }: ChatInterfaceProps) {
   const [input, setInput] = useState("");
+  
+  // Guardamos el historial completo aquí
   const [messages, setMessages] = useState<{ role: "user" | "ai"; text: string }[]>([
     { 
       role: "ai", 
@@ -26,46 +20,46 @@ export default function ChatInterface({ dict }: ChatInterfaceProps) {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- LÓGICA INTELIGENTE TEMPORAL (Simulación) ---
-  // Esto simula lo que hará DeepSeek después.
-  const getSmartResponse = (text: string) => {
-    const lower = text.toLowerCase();
-
-    // CASO 1: WebApp Compleja (Uber, Sistema, App, Login) -> $1,000+
-    if (lower.includes("app") || lower.includes("sistema") || lower.includes("uber") || lower.includes("plataforma") || lower.includes("usuarios")) {
-      return `Análisis: Requerimientos avanzados detectados.\n\nRecomendación: WebApp a Medida.\nPrecio estimado: Desde $1,000 USD.\nIncluye: Base de datos, gestión de usuarios y panel administrativo.`;
-    }
-    
-    // CASO 2: Landing Page (Simple, una página, producto) -> $299
-    if (lower.includes("landing") || lower.includes("una pagina") || lower.includes("un producto") || lower.includes("simple")) {
-      return `Análisis: Proyecto enfocado en conversión rápida.\n\nRecomendación: Landing Page.\nPrecio fijo: $299 USD.\nIncluye: Diseño en 1 sola página, carga ultra rápida y botón de WhatsApp.`;
-    }
-
-    // CASO 3: Por defecto (Web Corporativa, Flores, Empresa) -> $499
-    return `Análisis: Sitio web profesional para negocio.\n\nRecomendación: Web Corporativa.\nPrecio fijo: $499 USD.\nIncluye: Hasta 5 secciones (Inicio, Nosotros, Servicios), formulario de contacto y diseño premium.`;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    // 1. Mostrar mensaje usuario
-    const userMessage = input;
-    setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
+    const userMessageText = input;
     setInput("");
     setIsLoading(true);
 
-    try {
-      // Simulación de "pensamiento" de la IA (1.5 segundos)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // 2. Obtener respuesta inteligente basada en tus precios reales
-      const aiResponse = getSmartResponse(userMessage);
+    // 1. Actualizamos la interfaz visual inmediatamente
+    const newHistory = [...messages, { role: "user" as const, text: userMessageText }];
+    setMessages(newHistory);
 
-      setMessages((prev) => [...prev, { role: "ai", text: aiResponse }]);
+    try {
+      // 2. Preparamos los mensajes para enviar a la API
+      // Transformamos "text" a "content" que es lo que entiende OpenAI/DeepSeek
+      const apiMessages = newHistory.map(msg => ({
+        role: msg.role === 'ai' ? 'assistant' : 'user',
+        content: msg.text
+      }));
+
+      // 3. LLAMADA A TU API REAL (Ya no es simulación)
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          messages: apiMessages, // Enviamos TODO el historial para tener contexto
+          lang: lang 
+        }),
+      });
+
+      if (!response.ok) throw new Error('Error en la red');
+
+      const data = await response.json();
+      
+      // 4. Agregamos la respuesta real de DeepSeek
+      setMessages((prev) => [...prev, { role: "ai", text: data.response }]);
 
     } catch (error) {
-      setMessages((prev) => [...prev, { role: "ai", text: "Error de conexión." }]);
+      console.error(error);
+      setMessages((prev) => [...prev, { role: "ai", text: "Error de conexión. Intenta nuevamente." }]);
     } finally {
       setIsLoading(false);
     }
@@ -73,16 +67,15 @@ export default function ChatInterface({ dict }: ChatInterfaceProps) {
 
   return (
     <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 flex flex-col h-[600px]">
-          
-      {/* Header del Chat */}
+      {/* Header */}
       <div className="bg-slate-900 p-4 flex items-center gap-3 shrink-0">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <div className="ml-auto text-xs text-slate-400 font-mono">DeepSeek AI V3 (Demo)</div>
+        <div className="ml-auto text-xs text-slate-400 font-mono">DeepSeek AI V3 (Live)</div>
       </div>
 
-      {/* Área de Mensajes */}
+      {/* Chat Area */}
       <div className="flex-1 p-6 bg-slate-50 overflow-y-auto space-y-4">
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
@@ -98,9 +91,8 @@ export default function ChatInterface({ dict }: ChatInterfaceProps) {
             </div>
           </div>
         ))}
-
         {isLoading && (
-          <div className="flex gap-3">
+           <div className="flex gap-3">
              <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white"><Bot size={16}/></div>
              <div className="bg-white p-4 rounded-2xl rounded-tl-none border border-slate-100 flex gap-1 items-center">
                 <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></span>
@@ -131,7 +123,6 @@ export default function ChatInterface({ dict }: ChatInterfaceProps) {
           </button>
         </div>
       </form>
-
     </div>
   );
 }
